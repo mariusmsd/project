@@ -1,6 +1,7 @@
 package com.shop.service;
 
 import com.shop.domain.Product;
+import com.shop.domain.Stoc;
 import com.shop.domain.enums.ProductType;
 import com.shop.domain.model.ProductDTO;
 import com.shop.mapper.ProductDTOToEntityMapper;
@@ -27,6 +28,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void createProduct(ProductDTO productDTO) {
 		Product product = productDTOToEntityMapper.convert(productDTO);
+		Stoc stoc = Stoc.builder()
+						.stoc(productDTO.getStoc())
+						.build();
+		product.setStoc(stoc);
+		System.out.println(product+"====\n"+stoc);
 		repo.save(product);
 	}
 

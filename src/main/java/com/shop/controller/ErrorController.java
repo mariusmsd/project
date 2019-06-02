@@ -12,7 +12,7 @@ public class ErrorController {
     @ExceptionHandler(Exception.class)
     public ModelAndView handleException(HttpServletRequest request, Exception ex) {
         ModelAndView modelAndView = new ModelAndView();
-
+        ex.printStackTrace();
         modelAndView.addObject("exception", ex.getLocalizedMessage());
         modelAndView.addObject("url", request.getRequestURL());
         modelAndView.setViewName("error");

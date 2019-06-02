@@ -17,7 +17,6 @@ public class ProductDTOToEntityMapper implements Converter<ProductDTO, Product> 
     @Override
     public Product convert(ProductDTO productDTO) {
         return Product.builder()
-                      .id(LocalDateTime.now().toString())
                       .name(productDTO.getName())
                       .price(new BigDecimal(productDTO.getPrice()))
                       .stoc(Stoc.builder()

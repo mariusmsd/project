@@ -2,31 +2,25 @@ package com.shop.controller;
 
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.shop.domain.model.ProductDTO;
+import com.shop.domain.model.UserDTO;
+import com.shop.service.UserService;
 
+@Controller
 public class UserController {
-	
-    @GetMapping("/list-users")
-    public String listAllUsers(ModelMap model) {
-        String name = getLoggedInUserName(model);
-        List<UserDTO> allUsers = service.getAllUsers();
-        model.put("users", allUsers);
-        return "list-users";
-    }
-    
-    private String getLoggedInUserName(ModelMap model) {
-        Object principal = SecurityContextHolder.getContext()
-                                                .getAuthentication().getPrincipal();
 
-        if (principal instanceof UserDetails) {
-            return ((UserDetails) principal).getUsername();
-        }
+	@Autowired
+	private UserService service;
 
-        return principal.toString();
+	@GetMapping("/list-users")
+	public String listAllUsers(ModelMap model) {
+		List<UserDTO> allUsers = service.getAllUsers();
+		model.put("users", allUsers);
+		return "list-users";
+	}
 
 }

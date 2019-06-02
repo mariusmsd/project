@@ -3,6 +3,8 @@ package com.shop.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -19,6 +21,7 @@ import lombok.NoArgsConstructor;
 public class Stoc {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	private Integer stoc;

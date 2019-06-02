@@ -2,7 +2,7 @@
 <%@ include file="common/navigation.jspf" %>
 
 <div class="container">
-    <form:form method="post" action="/create-user" modelAttribute="user">
+    <form:form method="get" action="/list-users" modelAttribute="user">
         <form:hidden path="id"/>
         <fieldset class="form-group">
             <form:label path="name">user id</form:label>

@@ -12,11 +12,11 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${users}" var="users">
+        <c:forEach items="${users}" var="user">
             <tr>
-            	<th>user id</th>
-            	<th>username</th>
-            	<th>userpass</th>
+            	<td>${user.id}</td>
+            	<td>${user.username}</td>
+            	<td>${user.password}</td>
             </tr>
         </c:forEach>
         </tbody>

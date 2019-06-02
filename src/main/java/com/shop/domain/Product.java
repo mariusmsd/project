@@ -4,10 +4,13 @@ import com.shop.domain.enums.ProductType;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -16,6 +19,7 @@ import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -26,7 +30,8 @@ import lombok.NoArgsConstructor;
 public class Product {
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	@Column(name = "name")
 	private String name;
@@ -40,7 +45,7 @@ public class Product {
 	@Lob
 	private byte[] image;
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "stoc_id")
 	private Stoc stoc;
 }
